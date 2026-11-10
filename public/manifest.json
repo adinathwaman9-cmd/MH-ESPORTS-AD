@@ -1,0 +1,52 @@
+{
+  "id": "/",
+  "name": "MH ESPORTS - Free Fire Tournaments",
+  "short_name": "MH ESPORTS",
+  "description": "MH ESPORTS - Daily Free Fire MAX Tournaments, Custom Rooms, Live Leaderboards, and Instant UPI Rewards.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "display_override": ["standalone", "minimal-ui"],
+  "orientation": "portrait",
+  "background_color": "#0B0E17",
+  "theme_color": "#FF6B00",
+  "lang": "en",
+  "dir": "ltr",
+  "categories": ["games", "entertainment", "sports"],
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "All Matches",
+      "short_name": "Matches",
+      "description": "View live and upcoming Free Fire tournaments",
+      "url": "/#matches",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "My Wallet",
+      "short_name": "Wallet",
+      "description": "Add cash and withdraw winnings via UPI",
+      "url": "/#wallet",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
+    }
+  ]
+}

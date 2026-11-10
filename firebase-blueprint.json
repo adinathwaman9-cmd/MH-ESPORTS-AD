@@ -1,0 +1,119 @@
+{
+  "entities": {
+    "Tournament": {
+      "title": "Tournament",
+      "description": "Free Fire tournament or custom room match details",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string", "maxLength": 100 },
+        "gameMode": { "type": "string", "enum": ["SOLO", "DUO", "SQUAD", "CS_4V4"] },
+        "map": { "type": "string", "enum": ["Bermuda", "Purgatory", "Kalahari", "Alpine", "Nexterra"] },
+        "entryFee": { "type": "number" },
+        "prizePool": { "type": "number" },
+        "perKill": { "type": "number" },
+        "maxSlots": { "type": "number" },
+        "registeredCount": { "type": "number" },
+        "status": { "type": "string", "enum": ["UPCOMING", "REGISTRATION_OPEN", "ROOM_OUT", "LIVE", "COMPLETED", "CANCELLED"] },
+        "startTime": { "type": "string", "maxLength": 50 },
+        "roomId": { "type": "string", "maxLength": 50 },
+        "roomPassword": { "type": "string", "maxLength": 50 },
+        "rules": { "type": "string", "maxLength": 1000 },
+        "createdAt": { "type": "string" },
+        "winnerTeam": { "type": "string", "maxLength": 100 }
+      },
+      "required": ["title", "gameMode", "map", "entryFee", "prizePool", "maxSlots", "status", "startTime"]
+    },
+    "Registration": {
+      "title": "Registration",
+      "description": "User registration entry for a Free Fire tournament",
+      "type": "object",
+      "properties": {
+        "tournamentId": { "type": "string", "maxLength": 128 },
+        "userId": { "type": "string", "maxLength": 128 },
+        "userName": { "type": "string", "maxLength": 100 },
+        "ffIgn": { "type": "string", "maxLength": 50 },
+        "ffUid": { "type": "string", "maxLength": 30 },
+        "teamName": { "type": "string", "maxLength": 50 },
+        "slotNumber": { "type": "number" },
+        "paidFee": { "type": "number" },
+        "registeredAt": { "type": "string" }
+      },
+      "required": ["tournamentId", "userId", "ffIgn", "ffUid", "registeredAt"]
+    },
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "Player profile, Free Fire gaming credentials, wallet and stats",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "maxLength": 128 },
+        "email": { "type": "string", "maxLength": 100 },
+        "displayName": { "type": "string", "maxLength": 100 },
+        "photoURL": { "type": "string", "maxLength": 500 },
+        "ffIgn": { "type": "string", "maxLength": 50 },
+        "ffUid": { "type": "string", "maxLength": 30 },
+        "githubUsername": { "type": "string", "maxLength": 50 },
+        "walletBalance": { "type": "number" },
+        "winningBalance": { "type": "number" },
+        "bonusBalance": { "type": "number" },
+        "totalMatches": { "type": "number" },
+        "totalKills": { "type": "number" },
+        "totalWinnings": { "type": "number" },
+        "role": { "type": "string", "enum": ["admin", "player"] },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["uid", "displayName"]
+    },
+    "Transaction": {
+      "title": "Transaction",
+      "description": "Wallet transaction records for deposit, withdrawal, match fee, or prize rewards",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "maxLength": 128 },
+        "userDisplayName": { "type": "string", "maxLength": 100 },
+        "type": { "type": "string", "enum": ["DEPOSIT", "WITHDRAW", "ENTRY_FEE", "WINNING", "BONUS"] },
+        "amount": { "type": "number" },
+        "status": { "type": "string", "enum": ["PENDING", "COMPLETED", "FAILED", "REJECTED"] },
+        "title": { "type": "string", "maxLength": 150 },
+        "details": { "type": "string", "maxLength": 200 },
+        "utrNumber": { "type": "string", "maxLength": 50 },
+        "upiId": { "type": "string", "maxLength": 100 },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["userId", "type", "amount", "status", "title", "createdAt"]
+    },
+    "AppSetting": {
+      "title": "AppSetting",
+      "description": "Platform global payment and organizer configuration",
+      "type": "object",
+      "properties": {
+        "adminUpiId": { "type": "string", "maxLength": 100 },
+        "merchantName": { "type": "string", "maxLength": 100 },
+        "whatsappGroupUrl": { "type": "string", "maxLength": 200 },
+        "supportPhone": { "type": "string", "maxLength": 30 },
+        "updatedAt": { "type": "string" }
+      }
+    }
+  },
+  "firestore": {
+    "/tournaments/{tournamentId}": {
+      "schema": "Tournament",
+      "description": "Collection of Free Fire tournaments and custom room matches"
+    },
+    "/registrations/{registrationId}": {
+      "schema": "Registration",
+      "description": "Tournament participant registrations with in-game name and UID"
+    },
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "User profiles including stats and wallet balances"
+    },
+    "/transactions/{transactionId}": {
+      "schema": "Transaction",
+      "description": "Wallet transaction ledger including real UPI payments and UTR verification"
+    },
+    "/settings/{settingId}": {
+      "schema": "AppSetting",
+      "description": "Global settings for real UPI payment and contact info"
+    }
+  }
+}

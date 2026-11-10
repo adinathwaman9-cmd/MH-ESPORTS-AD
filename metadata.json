@@ -1,0 +1,6 @@
+{
+  "name": "ClashBattle - Free Fire Esports Tournaments",
+  "description": "Daily Free Fire tournaments, custom room matches, live leaderboards, wallet system, and instant rewards platform.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

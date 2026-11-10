@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    background-color: #0B0E17;
+    color: #F3F4F6;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+.font-heading {
+  font-family: 'Teko', sans-serif;
+  letter-spacing: 0.05em;
+}
+
+.font-gaming {
+  font-family: 'Rajdhani', sans-serif;
+}
+
+/* Custom esports scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0B0E17;
+}
+::-webkit-scrollbar-thumb {
+  background: #252D4A;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #FF6B00;
+}
+
+/* Pulse animation for live matches */
+@keyframes neonPulse {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(255, 107, 0, 0.4), inset 0 0 10px rgba(255, 107, 0, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(255, 107, 0, 0.7), inset 0 0 15px rgba(255, 107, 0, 0.4);
+  }
+}
+
+.neon-card {
+  animation: neonPulse 3s infinite ease-in-out;
+}
